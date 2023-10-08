@@ -2,6 +2,14 @@
 	// Connect to database
 	include("db_connect.php");
 	$request_method = $_SERVER["REQUEST_METHOD"];
+	
+	function sendHeaders($methods) {
+		header("Access-Control-Allow-Origin: *"); 
+		header("Access-Control-Allow-Methods: " . $methods . ", OPTIONS"); 
+		header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+		header("Content-Type: application/json");
+	  }
+
 
 	function getArticles()
 	{
@@ -9,11 +17,12 @@
 		$query = "SELECT * FROM article";
 		$response = array();
 		$result = mysqli_query($conn, $query);
-		while($row = mysqli_fetch_array($result))
+		while($row = mysqli_fetch_assoc($result))
 		{
 			$response[] = $row;
 		}
-		header('Content-Type: application/json');
+		sendHeaders('GET');
+		header("HTTP/1.0 200 OK");
 		echo json_encode($response, JSON_PRETTY_PRINT);
 	}
 	
@@ -133,10 +142,6 @@
 				getArticles();
 			}
 			break;
-		default:
-			// Invalid Request Method
-			header("HTTP/1.0 405 Method Not Allowed");
-			break;
 			
 		case 'POST':
 			// Ajouter un produit
@@ -153,6 +158,10 @@
 			// Supprimer un produit
 			$id = intval($_GET["id"]);
 			deleteArticle($id);
+			break;
+			default:
+			// Invalid Request Method
+			header("HTTP/1.0 405 Method Not Allowed");
 			break;
 
 	}

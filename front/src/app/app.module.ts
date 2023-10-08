@@ -13,6 +13,7 @@ import { NosServicesComponent } from './components/nos-services/nos-services.com
 import { ProjectsComponent } from './components/projects/projects.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { PriceComponent } from './components/price/price.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { PriceComponent } from './components/price/price.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
