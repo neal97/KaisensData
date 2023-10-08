@@ -45,152 +45,50 @@
         <!-- /.row -->
         <div class="position-relative">
           <div class="shape bg-dot primary rellax w-17 h-20" data-rellax-speed="1" style="top: 0; left: -1.7rem;"></div>
-          <div class="carousel owl-carousel gap-small blog grid-view" data-margin="0" data-dots="true" data-autoplay="false" data-autoplay-timeout="5000" data-responsive='{"0":{"items": "1"}, "768":{"items": "2"}, "992":{"items": "2"}, "1200":{"items": "3"}}'>
-            <div class="item">
-              <div class="item-inner">
-                <article>
-                  <div class="card">
-                    <figure class="card-img-top overlay overlay-1 hover-scale"><a href="#"> <img src="./assets/img/photos/b4.jpg" alt="" /></a>
-                      <figcaption>
-                        <h5 class="from-top mb-0">Read More</h5>
-                      </figcaption>
-                    </figure>
-                    <div class="card-body">
-                      <div class="post-header">
-                        <h2 class="post-title h3 mt-1 mb-3"><a class="link-dark" href="./blog-post.html">Ligula tristique quis risus</a></h2>
+
+          <owl-carousel-o [options]="customOptions" >
+
+            <ng-container *ngFor="let art of articles">
+              <ng-template carouselSlide [id]="art.id">
+                <div class="item">
+                  <div class="item-inner">
+                    <article>
+                      <div class="card">
+                        <figure class="card-img-top overlay overlay-1 hover-scale"><a href="#"> <img src="/assets/{{art.Image}}" alt="" /></a>
+                          <figcaption>
+                            <h5 class="from-top mb-0">Read More</h5>
+                          </figcaption>
+                        </figure>
+                        <div class="card-body">
+                          <div class="post-header">
+                            <h2 class="post-title h3 mt-1 mb-3"><a class="link-dark" href="./blog-post.html">{{art.Title}}</a></h2>
+                          </div>
+                          <!-- /.post-header -->
+                          <div class="post-content">
+                            <p>{{art.Introduction}}</p>
+                          </div>
+                          <!-- /.post-content -->
+                        </div>
+                        <!--/.card-body -->
+                        <div class="card-footer">
+                          <ul class="post-meta d-flex mb-0">
+                            <li class="post-date"><i class="uil uil-calendar-alt"></i><span>{{art.LastMod | date: 'longDate'}}</span></li>
+                            <li class="post-comments"><a href="#"><i class="uil uil-file-alt fs-15"></i>{{art.article_category}}</a></li>
+                          </ul>
+                          <!-- /.post-meta -->
+                        </div>
+                        <!-- /.card-footer -->
                       </div>
-                      <!-- /.post-header -->
-                      <div class="post-content">
-                        <p>Mauris convallis non ligula non interdum. Gravida vulputate convallis tempus vestibulum cras imperdiet nun eu dolor.</p>
-                      </div>
-                      <!-- /.post-content -->
-                    </div>
-                    <!--/.card-body -->
-                    <div class="card-footer">
-                      <ul class="post-meta d-flex mb-0">
-                        <li class="post-date"><i class="uil uil-calendar-alt"></i><span>14 Apr 2021</span></li>
-                        <li class="post-comments"><a href="#"><i class="uil uil-file-alt fs-15"></i>Coding</a></li>
-                      </ul>
-                      <!-- /.post-meta -->
-                    </div>
-                    <!-- /.card-footer -->
+                      <!-- /.card -->
+                    </article>
+                    <!-- /article -->
                   </div>
-                  <!-- /.card -->
-                </article>
-                <!-- /article -->
-              </div>
-              <!-- /.item-inner -->
-            </div>
-            <!-- /.item -->
-            <div class="item">
-              <div class="item-inner">
-                <article>
-                  <div class="card">
-                    <figure class="card-img-top overlay overlay-1 hover-scale"><a href="#"> <img src="./assets/img/photos/b5.jpg" alt="" /></a>
-                      <figcaption>
-                        <h5 class="from-top mb-0">Read More</h5>
-                      </figcaption>
-                    </figure>
-                    <div class="card-body">
-                      <div class="post-header">
-                        <h2 class="post-title h3 mt-1 mb-3"><a class="link-dark" href="./blog-post.html">Nullam id dolor elit id nibh</a></h2>
-                      </div>
-                      <!-- /.post-header -->
-                      <div class="post-content">
-                        <p>Mauris convallis non ligula non interdum. Gravida vulputate convallis tempus vestibulum cras imperdiet nun eu dolor.</p>
-                      </div>
-                      <!-- /.post-content -->
-                    </div>
-                    <!--/.card-body -->
-                    <div class="card-footer">
-                      <ul class="post-meta d-flex mb-0">
-                        <li class="post-date"><i class="uil uil-calendar-alt"></i><span>29 Mar 2021</span></li>
-                        <li class="post-comments"><a href="#"><i class="uil uil-file-alt fs-15"></i>Workspace</a></li>
-                      </ul>
-                      <!-- /.post-meta -->
-                    </div>
-                    <!-- /.card-footer -->
-                  </div>
-                  <!-- /.card -->
-                </article>
-                <!-- /article -->
-              </div>
-              <!-- /.item-inner -->
-            </div>
-            <!-- /.item -->
-            <div class="item">
-              <div class="item-inner">
-                <article>
-                  <div class="card">
-                    <figure class="card-img-top overlay overlay-1 hover-scale"><a href="#"> <img src="./assets/img/photos/b6.jpg" alt="" /></a>
-                      <figcaption>
-                        <h5 class="from-top mb-0">Read More</h5>
-                      </figcaption>
-                    </figure>
-                    <div class="card-body">
-                      <div class="post-header">
-                        <h2 class="post-title h3 mt-1 mb-3"><a class="link-dark" href="./blog-post.html">Ultricies fusce porta elit</a></h2>
-                      </div>
-                      <!-- /.post-header -->
-                      <div class="post-content">
-                        <p>Mauris convallis non ligula non interdum. Gravida vulputate convallis tempus vestibulum cras imperdiet nun eu dolor.</p>
-                      </div>
-                      <!-- /.post-content -->
-                    </div>
-                    <!--/.card-body -->
-                    <div class="card-footer">
-                      <ul class="post-meta d-flex mb-0">
-                        <li class="post-date"><i class="uil uil-calendar-alt"></i><span>26 Feb 2021</span></li>
-                        <li class="post-comments"><a href="#"><i class="uil uil-file-alt fs-15"></i>Meeting</a></li>
-                      </ul>
-                      <!-- /.post-meta -->
-                    </div>
-                    <!-- /.card-footer -->
-                  </div>
-                  <!-- /.card -->
-                </article>
-                <!-- /article -->
-              </div>
-              <!-- /.item-inner -->
-            </div>
-            <!-- /.item -->
-            <div class="item">
-              <div class="item-inner">
-                <article>
-                  <div class="card">
-                    <figure class="card-img-top overlay overlay-1 hover-scale"><a href="#"> <img src="./assets/img/photos/b7.jpg" alt="" /></a>
-                      <figcaption>
-                        <h5 class="from-top mb-0">Read More</h5>
-                      </figcaption>
-                    </figure>
-                    <div class="card-body">
-                      <div class="post-header">
-                        <h2 class="post-title h3 mt-1 mb-3"><a class="link-dark" href="./blog-post.html">Morbi leo risus porta eget</a></h2>
-                      </div>
-                      <!-- /.post-header -->
-                      <div class="post-content">
-                        <p>Mauris convallis non ligula non interdum. Gravida vulputate convallis tempus vestibulum cras imperdiet nun eu dolor.</p>
-                      </div>
-                      <!-- /.post-content -->
-                    </div>
-                    <!--/.card-body -->
-                    <div class="card-footer">
-                      <ul class="post-meta d-flex mb-0">
-                        <li class="post-date"><i class="uil uil-calendar-alt"></i><span>7 Jan 2021</span></li>
-                        <li class="post-comments"><a href="#"><i class="uil uil-file-alt fs-15"></i>Business Tips</a></li>
-                      </ul>
-                      <!-- /.post-meta -->
-                    </div>
-                    <!-- /.card-footer -->
-                  </div>
-                  <!-- /.card -->
-                </article>
-                <!-- /article -->
-              </div>
-              <!-- /.item-inner -->
-            </div>
-            <!-- /.item -->
-          </div>
+                  <!-- /.item-inner -->
+                </div>
+              </ng-template>
+            </ng-container>
+
+          </owl-carousel-o>
           <!-- /.owl-carousel -->
         </div>
         <!-- /.position-relative -->

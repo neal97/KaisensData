@@ -159,6 +159,9 @@
 			$id = intval($_GET["id"]);
 			deleteArticle($id);
 			break;
+		case 'OPTIONS':
+			sendHeaders('GET, POST, PUT, PATCH');
+			break;
 			default:
 			// Invalid Request Method
 			header("HTTP/1.0 405 Method Not Allowed");

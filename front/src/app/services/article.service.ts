@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 
-const apiRoot = 'http://localhost:4000/';
+const apiRoot = 'http://localhost:4000/article';
 
 const httpOptions = {
   headers: new HttpHeaders(
@@ -27,7 +27,7 @@ export class ArticleService
 
 
   getAll(): Observable<object> {
-    return this.http.get(`${apiRoot}article`, httpOptions)
+    return this.http.get(`${apiRoot}`, httpOptions)
   }
 
 
