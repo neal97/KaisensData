@@ -2,6 +2,6 @@
 	$server = "localhost";
 	$username = "root";
 	$password = "";
-	$db = "stock";
+	$db = "kaisens_data";
 	$conn = mysqli_connect($server, $username, $password, $db);
 ?>

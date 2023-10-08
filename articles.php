@@ -3,10 +3,10 @@
 	include("db_connect.php");
 	$request_method = $_SERVER["REQUEST_METHOD"];
 
-	function getProducts()
+	function getArticles()
 	{
 		global $conn;
-		$query = "SELECT * FROM produit";
+		$query = "SELECT * FROM article";
 		$response = array();
 		$result = mysqli_query($conn, $query);
 		while($row = mysqli_fetch_array($result))
@@ -17,10 +17,10 @@
 		echo json_encode($response, JSON_PRETTY_PRINT);
 	}
 	
-	function getProduct($id=0)
+	function getArticle($id=0)
 	{
 		global $conn;
-		$query = "SELECT * FROM produit";
+		$query = "SELECT * FROM article";
 		if($id != 0)
 		{
 			$query .= " WHERE id=".$id." LIMIT 1";
@@ -35,21 +35,21 @@
 		echo json_encode($response, JSON_PRETTY_PRINT);
 	}
 	
-	function AddProduct()
+	function AddArticle()
 	{
 		global $conn;
-		$name = $_POST["name"];
+		$title = $_POST["title"];
+		$image = $_POST["image"];
+		$introduction = $_POST["introduction"];
 		$description = $_POST["description"];
-		$price = $_POST["price"];
-		$category = $_POST["category"];
-		$created = date('Y-m-d H:i:s');
-		$modified = date('Y-m-d H:i:s');
-		echo $query="INSERT INTO produit(name, description, price, category_id, created, modified) VALUES('".$name."', '".$description."', '".$price."', '".$category."', '".$created."', '".$modified."')";
+		$lastMod = date('Y-m-d H:i:s');
+		$idTheme = $_POST["idtheme"];	
+			echo $query="INSERT INTO produit(title, image, introduction, description, lastmod, idtheme) VALUES('".$title."', '".$image."', '".$introduction."', '".$description."', '".$lastMod."', '".$idTheme."')";
 		if(mysqli_query($conn, $query))
 		{
 			$response=array(
 				'status' => 1,
-				'status_message' =>'Produit ajouté avec succès.'
+				'status_message' =>'Produit ajoutï¿½ avec succï¿½s.'
 			);
 		}
 		else
@@ -63,19 +63,19 @@
 		echo json_encode($response);
 	}
 	
-	function updateProduct($id)
+	function updateArticle($id)
 	{
 		global $conn;
 		$_PUT = array();
 		parse_str(file_get_contents('php://input'), $_PUT);
-		$name = $_PUT["name"];
-		$description = $_PUT["description"];
-		$price = $_PUT["price"];
-		$category = $_PUT["category"];
-		$created = 'NULL';
-		$modified = date('Y-m-d H:i:s');
-		$query="UPDATE produit SET name='".$name."', description='".$description."', price='".$price."', category_id='".$category."', modified='".$modified."' WHERE id=".$id;
-		
+		$title = $_PUT["title"];
+		$image = $_PUT["image"];
+		$introduction = $_PUT["introduction"];
+		$description = $_PUT["category"];
+		$lastMod = 'NULL';
+		$idTheme = $_PUT["idtheme"];
+		$query="UPDATE produit SET title='".$title."', image='".$image."', introduction='".$introduction."', description='".$description."', idtheme='".$idTheme."' WHERE id=".$id;
+
 		if(mysqli_query($conn, $query))
 		{
 			$response=array(
@@ -96,10 +96,10 @@
 		echo json_encode($response);
 	}
 	
-	function deleteProduct($id)
+	function deleteArticle($id)
 	{
 		global $conn;
-		$query = "DELETE FROM produit WHERE id=".$id;
+		$query = "DELETE FROM article WHERE id=".$id;
 		if(mysqli_query($conn, $query))
 		{
 			$response=array(
@@ -126,11 +126,11 @@
 			if(!empty($_GET["id"]))
 			{
 				$id=intval($_GET["id"]);
-				getProduct($id);
+				getArticle($id);
 			}
 			else
 			{
-				getProducts();
+				getArticles();
 			}
 			break;
 		default:
@@ -140,19 +140,19 @@
 			
 		case 'POST':
 			// Ajouter un produit
-			AddProduct();
+			AddArticle();
 			break;
 			
 		case 'PUT':
 			// Modifier un produit
 			$id = intval($_GET["id"]);
-			updateProduct($id);
+			updateArticle($id);
 			break;
 			
 		case 'DELETE':
 			// Supprimer un produit
 			$id = intval($_GET["id"]);
-			deleteProduct($id);
+			deleteArticle($id);
 			break;
 
 	}

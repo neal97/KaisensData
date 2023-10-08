@@ -1,5 +1,5 @@
 <?php
-	$url = 'http://127.0.0.1/api/produits';
+	$url = 'http://127.0.0.1/api/articles';
 	$data = array('name' => 'PEC', 'description' => 'Pencil 2H', 'price' => '2.25', 'category' => '9');
 
 	// use key 'http' even if you send the request to https://...
